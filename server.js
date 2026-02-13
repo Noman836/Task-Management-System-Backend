@@ -12,9 +12,7 @@ const PORT = process.env.PORT || 5000;
 app.use(helmet());
 app.use(cors({
   origin: [
-    'http://localhost:3000',
-    'https://task-management-system-frontend-nce.vercel.app/',
-    'https://7c4d-103-152-100-63.ngrok-free.app'
+    'http://localhost:3000'
   ],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -25,16 +23,14 @@ app.use(cors({
 app.options('*', (req, res) => {
   const origin = req.headers.origin;
   const allowedOrigins = [
-    'http://localhost:3000',
-    'https://task-management-system-frontend-1w4v-bht5omyxa.vercel.app/',
-    'https://7c4d-103-152-100-63.ngrok-free.app'
+    'http://localhost:3000'
   ];
   
   if (allowedOrigins.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   }
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, ngrok-skip-browser-warning');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.sendStatus(200);
 });
