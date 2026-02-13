@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: ['http://localhost:3000','https://task-management-system-frontend-1w4.vercel.app/'],
+  origin: ['http://localhost:3000','https://task-management-system-frontend-1w4v-bht5omyxa.vercel.app/','https://*.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
@@ -19,7 +19,12 @@ app.use(cors({
 
 // Pre-flight handler for CORS
 app.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  const origin = req.headers.origin;
+  const allowedOrigins = ['http://localhost:3000','https://task-management-system-frontend-1w4v-bht5omyxa.vercel.app/'];
+  
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
