@@ -13,7 +13,7 @@ app.use(helmet());
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://task-management-system-frontend-1w4v-bht5omyxa.vercel.app/',
+    'https://task-management-system-frontend-nce.vercel.app/',
     'https://7c4d-103-152-100-63.ngrok-free.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
